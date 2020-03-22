@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+function solution(strings, n) {
+    const answer = [];
+    let arrangeArray = [];
+    
+    strings.forEach((item, index) => {
+        arrangeArray.push(item[n]);
+    });
+    arrangeArray.sort(); 
+
+    // 한글자씩 뽑아낸 배열을 원래 배열 기준의 index 구하기
+    for( let i = 0; i < strings.length; i ++) {
+        let index = arrangeArray.findIndex( v => v === strings[i][n]);
+        answer.push(strings[index])
+    }
+
+    return answer
+}
+
+</script>
+
+<script>
+
+function solution2(strings, n) {
+    
+    strings.sort((a,b) => {
+        let first = a[n];
+        let second = b[n];
+        if( first === second ) {
+            //return (a > b) - (a < b); // 오름차순 버전
+            return (a<b) - (a>b) // 내림차순 버전
+        } else {
+            
+            //return (first > second) - (first < second);
+            return (first < second) - (first > second)
+        }
+        
+    });
+    console.log(strings)
+    return strings;
+
+}
+
+solution2(['cdx', 'abce', 'abcd'], 2); //[abcd, abce, cdx]
+solution2(['sun', 'bed', 'car'], 1); //[abcd, abce, cdx]
+</script>
+
+
+</body>
+</html>

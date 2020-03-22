@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+
+    function solution(n, lost, reserve) {
+        var answer = 0;
+        
+        // 초기 세팅 [1, 1, 1, 1, 1];
+        const student = Array(n).fill(1);
+
+        // 잃어버린 애들은 -1
+        for ( let i = 0; i < lost.length; i ++) {
+            //console.log(lost[i])
+            const index = lost[i] - 1;
+            student[index]--;
+        }
+        // 여벌 있는 애들은 +1
+        for ( let i = 0; i < reserve.length; i ++) {
+            //console.log(reserve[i])
+            const index = reserve[i] - 1;
+            student[index]++;
+        }
+        console.log('세팅', student)
+
+        // 체육복 나눠주기
+        // 앞에 있는 숫자에게 나눠주기
+        for ( let i = 0; i < student.length; i ++) {    
+            // 맨 앞에 있는 아이가 아니면서, 현재 아이가 체육복이 없고
+            if(student[i] === 0 && i !== 0) {
+                // 내 앞에 애가 2벌이 있으면
+                if(student[i-1] === 2) {
+                    student[i-1]--;
+                    student[i]++;
+                    continue;
+                }
+            }
+            
+            // 맨 뒤에 있는 아이가 아니면서, 현재 아이가 체육복이 없고
+            if(student[i] === 0 && i !== student.length -1) {
+                // 내 뒤에 애가 2벌이 있으면
+                if(student[i+1] === 2) {
+                    student[i+1]--;
+                    student[i]++;
+                    continue;
+                }
+            }
+        }
+        console.log('나눠', student)
+
+        return student.filter((v) => {
+            if (v !== 0) {
+                console.log(v)
+                return v
+            }
+        }).length;
+        
+    }
+    solution(6, [1, 6], [2, 4])
+    // 전체 학생수 6
+    // 1,6 번 학생이 잃어버림
+    // 2,4 번 학생이 여벌
+    // 체육 참가 가능 수는 5명
+</script>
+
+
+
+</body>
+</html>

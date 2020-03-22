@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+
+function solution(n) {
+  var result = 0;
+  var primeNumber = [];
+  // 함수를 완성하세요.
+  for (var i = 2; i <= n; i++) {
+    var devided = 0;
+
+    for (var a = 2; a < i; a++) {
+      if (i % a === 0) {
+        devided += 1;
+      }
+    }
+    if (devided === 0) {
+      primeNumber.push(i);
+    }
+  }
+
+  result = primeNumber.length;
+  console.log(primeNumber)
+  return result;
+}
+solution(5); // 2 3 5 
+
+</script>
+
+<!-- 에라토스테네스의 체 -->
+<script>
+    console.log('에라토스테네스의 체')
+    function solution2(n) {
+        const arr = [];
+        for( let i = 0; i < n+1 ; i++) {
+            arr.push(true)
+        }
+        console.log(arr)
+        for( let i = 2; i*i <= n; i++) {
+            console.log(i) // 2, 3
+            if(arr[i]) {
+                for(let j = i*i; j <= n; j += i) {
+                    arr[j] = false;
+                }
+            }
+        }
+        // 0과 1은 소수가 아니므로 false 값으로 바꿔준다.
+        arr.splice(0, 2, false, false);
+        console.log(arr)
+        // 배열에서 true인 값만 걸러내고, true인 값의 개수를 출력한다.
+        const result = arr.filter((value) => {
+            return value !== false;
+        });
+        return result.length;
+    }
+    solution2(10)
+</script>
+
+</body>
+</html>

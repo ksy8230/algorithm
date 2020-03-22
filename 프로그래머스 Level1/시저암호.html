@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+function solution(s, n) {
+    var answer = '';
+    //return answer;
+    /*console.log(String.fromCharCode(65)) // A
+    console.log(String.fromCharCode(66))
+    console.log('A'.charCodeAt(0)) // 65
+    console.log('Z'.charCodeAt(0)) // 90
+    console.log('a'.charCodeAt(0)) // 97
+    console.log('z'.charCodeAt(0)) // 122
+    console.log('start')*/
+    let test = Array(...s);
+    // n만큼 문자열 뒤에 공간 만들고 n만큼 문자열 앞에서 잘라내기
+    for(let i = 0; i < n; i++) {
+        //console.log(String.fromCharCode(Number(65+n+1)))
+        console.log(test[i].charCodeAt(0)) // z 아스키코드는 122
+        //test.push(String.fromCharCode(Number(65+(n+1)+1)));
+        test.splice(0, n);
+    }
+    console.log('result=', test.join(""))
+    return test.join("");
+}
+solution('AB', 1);
+</script>
+
+<script>
+    console.log('다른 사람 풀이')
+    function solution2(s, n) {
+        var answer = '';
+        let test = Array(...s);
+        answer = test.map(v => {
+            let code = v.charCodeAt(0); // 모든 배열 원소 아스키코드로 변환
+            if(code === 32) {
+                return " ";
+            }
+            if(code >=65 && code <= 90){ // 대문자 케이스
+                if(code+n > 90) {
+                    return String.fromCharCode(code+n - 26); // 91 - 26 // 65 = A
+                }
+                return String.fromCharCode(code+n);
+            }
+            if(code >= 97 && code <= 122) { // 소문자 케이스
+                if(code+n > 122) {
+                    return String.fromCharCode(code+n - 26);
+                }
+                return String.fromCharCode(code+n);
+            }
+        }).join("");
+        return answer;
+    }
+    solution2('AB', 1);
+    solution2('cd', 1);
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+
+function solution(s) {
+    let answer = '';
+    if(isNaN(s) === false && (s.length == 4 || s.length == 6)) { // sNaN() - 매개변수가 숫자인지 검사
+        answer = true;
+    } else {
+        answer = false;
+    }
+    console.log(answer)
+    return answer;
+}
+
+solution('1e20');
+</script>
+
+<!-- 다른 사람 풀이 정규표현식 없이 풀기 -->
+<script>
+function solution2(s){
+  var result = false;
+  if((s.length == 4 || s.length == 6) && /^[0-9]+$/.test(s)) {
+    result = true;
+  }
+  console.log(result)
+  return result;
+}
+solution2('1e20');
+</script>
+
+<!-- 다른 사람 풀이 정규표현식 없이 풀기 -->
+<script>
+function solution3(s){
+  var temp = parseInt(s); // parseInt() - 매개변수를 숫자형으로 변환
+  
+  console.log(s) // 1e20
+  console.log(temp) // 1
+  if(s==temp && (s.length === 4 || s.length === 6)){
+    return true;
+  }
+  return false;
+}
+solution3('1e20');
+</script>
+
+</body>
+</html>

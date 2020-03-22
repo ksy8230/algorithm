@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+
+function solution(a, b) {
+    const dayArray = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+    const fullDate = new Date(`2016.${a}.${b}`);
+    return dayArray[fullDate.getDay()];
+}
+solution(5, 24);
+
+
+/*
+백틱을 이용해 a,b 인자 값을 받아 new Date로 전체 날짜를 구하고
+getDay라는 요일 구하는 메서드를 사용해 (ex. 일요일은 0) 값을 구하였다.
+*/
+</script>
+
+
+</body>
+</html>

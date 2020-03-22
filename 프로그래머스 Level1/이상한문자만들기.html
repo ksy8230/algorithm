@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+function solution(s) {
+    var answer = '';
+    let arrays =s.split(' ');
+    arrays.map((v,i) => {
+        for( let j = 0; j < v.length; j ++) {
+            if(j % 2 === 0) {
+                //console.log(v.split('')[j].toUpperCase())
+                answer += v.split('')[j].toUpperCase();
+            } else {
+                //console.log(v.split('')[j].toLowerCase())
+                answer += v.split('')[j].toLowerCase();
+            }
+        }
+        answer += i < arrays.length-1 ? ' ' : '';
+        //console.log(answer)
+    });
+    console.log(answer)
+    return answer;
+}
+solution('try hello world')
+</script>
+
+<script>
+    console.log('for문으로 풀기')
+    function solution3(s) {
+        let answer = '';
+        let arrays =s.split(' ');
+        for(let i = 0; i < arrays.length; i ++) {
+            for(let j = 0; j < arrays[i].length; j++) {
+                if( j % 2 === 0 ){
+                    answer += arrays[i][j].toUpperCase();
+                } else {
+                    answer += arrays[i][j].toLowerCase();
+                } 
+            }
+            answer += i != arrays.length-1 ? ' ' : '';
+        }
+        console.log(answer)
+    }
+    solution3('try hello world');
+</script>
+
+<script>
+    console.log('map으로 풀기')
+    
+function solution2(s) {
+    var answer = '';
+    answer = s.split(' ').map(v => {
+        return v.split('').map((v,i) => {
+            if(i % 2 === 0) {
+                return v.toUpperCase()
+            } else {
+                return v.toLowerCase()
+            }
+        }).join('');
+    }).join(' ');
+    console.log('r=', answer)
+    return answer;
+}
+solution2('try hello world')
+</script>
+
+
+</body>
+</html>

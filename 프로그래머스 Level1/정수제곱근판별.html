@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+function solution(n) {
+    var answer = 0;
+    // n이 어떤 양수x 어떤 양수의 값과 일치할때
+    let resultI = 0;
+    for( let i = 1; i < n; i++) {
+        let devided = true;
+        if(i*i !== n){   
+            devided = false;
+        }
+        if(devided === true) {
+            console.log('답', i)
+            devided = true;
+            resultI = i;
+        }
+    }
+    if(resultI !== 0) {
+        answer = Math.pow(resultI+1, 2);
+    }else {
+        answer = -1;
+    }
+    return answer;
+}
+
+solution(4)
+</script>
+
+<script>
+    function solution2(n){
+        var answer = 0;
+        if(Number.isInteger(Math.sqrt(n))){
+            console.log('yes')
+            answer = Math.pow(Math.sqrt(n)+1, 2);
+        }else{
+            console.log('no')
+            answer = -1;
+        }
+        return answer;
+    }
+    solution2(3);
+</script>
+
+<script>
+
+    function solution3(n) {
+        if (Math.sqrt(n) === parseInt(Math.sqrt(n)))
+            return Math.pow((Math.sqrt(n)+1),2);
+        return -1;
+    }
+
+</script>
+</body>
+</html>
