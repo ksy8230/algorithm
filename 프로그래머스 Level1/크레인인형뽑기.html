@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+
+
+
+// 인형을 뽑아내서 인형이 어떤 숫자인지 리턴하는 함수
+function pick(board, index) {
+    const newBoard = board;
+    for (let i = 0; i < newBoard.length; i++) {
+        if(newBoard[i][index] !== 0) {
+            const doll = newBoard[i][index];
+            newBoard[i][index] = 0;
+            return doll;
+        }
+    }
+}
+
+function solution(board, moves) {
+    const basket = [];
+    let result = 0;
+    moves.forEach(v => {
+        const doll = pick(board, v-1);
+        if(doll) {
+            if(basket[basket.length-1] === doll) {
+                basket.pop();
+                result +=2;
+            } else {
+                basket.push(doll);
+            }
+        }
+    })
+    console.log(result)
+        return result;
+}
+
+solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]	, 	[1,5,3,5,1,2,1,4])
+
+</script>
+
+</body>
+</html>
