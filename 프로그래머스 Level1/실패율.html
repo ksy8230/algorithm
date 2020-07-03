@@ -23,7 +23,7 @@ function solution(N, stages) {
             users -= len;
         }
     }
-    
+
     stack.sort((a,b) => {
         if(b.ratio === a.ratio) {
             return a.index - b.index;
@@ -34,8 +34,8 @@ function solution(N, stages) {
 
     return stack.map(v => v.index);
 
-
 }
+
 solution(5, [2, 1, 2, 6, 2, 4, 3, 3])
 
 </script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+
+function solution(dartResult) {
+    let stack = [];
+    let score = { S:1, D:2, T:3 };
+    let count = 0;
+    const len = dartResult.length;
+
+    for (let i = 0; i < len; i ++) {
+        let data = dartResult.charAt(i);
+        // console.log(+data)
+        if (+data != data) { // number로 변환시 현재 text와 동일한지 (문자인 경우 제외시킴)
+            console.log(score[data])
+            if(score[data]){
+                stack.push(Math.pow(dartResult.slice(i - count, i), score[data]));
+                count = 0;
+                console.log(stack)
+            } else {
+                const invariable = data === '*' ? 2 : -1; //스타상, 아차상에 따른 상수 설정
+                const len = stack.length; //자주 사용되는 점수배열의 길이 값을 변수로 할당
+                if (invariable == 2 && len > 1) {
+                //스타상인 경우 앞의 값도 2배를 해줘야함으로 현재 몇 번째 기회인지를 체크한다.
+                stack[len - 2] = stack[len - 2] * invariable;
+                }
+                stack[len - 1] = stack[len - 1] * invariable;
+            }
+        } else {
+            count++;
+        }
+    }
+    console.log(stack.reduce((acc, value) => acc + value, 0))
+    return stack.reduce((acc, value) => acc + value, 0);
+}
+
+solution('1S2D*3T')
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>알고리즘</title>
+</head>
+<body>
+
+<script>
+
+function solution(n, arr1, arr2) {
+  var answer = [];
+  console.log('test', /9|31/.test('9'))
+  let c;
+    for(let i =0; i<n; i++){
+    c = (arr1[i]|arr2[i]).toString(2).replace(/1/g,"#").replace(/0/g," ");
+    console.log(arr1[i]|arr2[i])
+    while(c.length != n) {
+        c = " " + c;
+    }
+    answer.push(c);
+    }
+  return answer;
+}
+
+solution(6, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28])
+
+</script>
+
+</body>
+</html>
