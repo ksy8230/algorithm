@@ -11,6 +11,21 @@ https://programmers.co.kr/learn/courses/30/lessons/68644?language=javascript
 
 ---
 ### 풀이 ✨
+```javascript
+function solution(numbers) {
+    var answer = [];
+    for( let i = 0; i < numbers.length; i++ ){
+        for( let j = i + 1; j < numbers.length; j++) {
+            answer.push(numbers[i] + numbers[j])
+        }
+    }
+    const filter = new Set(answer);
+    answer = [...filter].sort((a,b) => {
+        return a - b
+    });
+    return answer;
+}
+```
 - 뽑아내는 두 개의 정수의 인덱스가 서로 달라야 한다.   
 이 부분에서 생각해내야할 것은 for문을 돌 때 두 번째로 뽑은 정수의 인덱스의 시작은 어디서부터인지 파악해야 한다.
 - new Set(array) 를 이용하여 배열에서 중복되는 인자를 제거한다.
