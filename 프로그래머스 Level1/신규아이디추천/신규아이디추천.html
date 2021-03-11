@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+    function solution(new_id) {
+        let answer = new_id;
+        function convertLowercase(a) {
+            return a.toLowerCase();
+        }
+        function removeLetter(a) {
+            const test = a.split('').filter(v => {
+                if (/[a-z]/.test(v) || !(isNaN(v)) || v === '-' || v === '_' || v === '.') {
+                    return a
+                }
+            });
+            return test.join('');
+        }
+        function doubledot(a) {
+            if (/\.{2,}/g.test(a)) {
+                return a.replace(/\.{2,}/g, '.');
+            }
+            return a;
+        }
+        function removedotstartend(a) {
+            if (/^\./.test(a)|/\.$/.test(a)) {
+                return a.replace(/^\./, '').replace(/\.$/, '');
+            }
+            return a;
+        }
+        function empty(a) {
+            if(a.length === 0) {
+                return a = 'a';
+            }
+            return a;
+        }
+        function minLength(a) {
+            if (a.length >= 16) {
+                a = a.substring(0, 15);
+                if (/\.$/.test(a)) {
+                    return a.replace(/\.$/, '');
+                }
+                return a;
+            }
+            return a;
+        }
+        function repeat(a) {
+            if(a.length <= 2) {
+                const lastLetter = a.split('').pop();
+                let newLetter = a;
+                for(let i = newLetter.length; i < 3; i++) {
+                    newLetter = newLetter.concat(lastLetter);
+                }
+                return newLetter;
+            }
+            return a;
+        }
+        answer = convertLowercase(new_id);
+        answer = removeLetter(answer);
+        answer = doubledot(answer);
+        answer = removedotstartend(answer);
+        answer = empty(answer);
+        answer = minLength(answer);
+        answer = repeat(answer);
+        
+        return answer;
+    }
+    
+    solution("...!@BaT#*..y.ab14fg--hijklm");
+    solution("er.r2f@$T.342..sd.");
+    solution(".1erf21!353#$@#d.");
+    solution("");
+    solution("...!@BaT#*..y.ab14fg--.j.k.lm");
+    solution("...!@BaT#*..y.abcdefghijklm");
+    
+</script>
+</html>
