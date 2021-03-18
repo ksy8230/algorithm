@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+// console.log(2 ** 3) // 2의 3승 = 8
+
+function solution(n) {
+  const s = new Set();
+  // 3 이상인 경우 홀수만 set에 넣기
+  for (let i = 3; i <= n; i += 2) {
+    s.add(i);
+  }
+  // set에 2 포함
+  s.add(2);
+  // 3의 배수들부터 n보다 작은 배수들 loop
+  for (let j = 3; j ** 2 < n; j++) {
+    if (s.has(j)) {
+        // set 안에 배수의 숫자가 해당하면 제거 (= 나 아닌 다른 애들도 나누어 떨어지는 숫자들 제거) 
+      for (let k = j ** 2; k <= n; k += j) {
+        s.delete(k);
+      }
+    }
+  }
+
+  return s.size;
+}
+    
+     solution(81);
+    // solution(5);
+
+
+</script>
+</html>
