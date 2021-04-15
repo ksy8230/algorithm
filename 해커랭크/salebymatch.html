@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    https://www.hackerrank.com/challenges/sock-merchant/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
+    
+    <script>
+
+        function sockMerchant(n, ar) {
+            let arr = ar.sort((a,b) => a-b);
+            let pair = 0;
+            for(let i = 0; i < n ; i++) {
+
+                if (arr[i] === arr[i+1]) {
+                    pair += 1;
+                    i += 1;
+                }
+            }
+
+        }
+        sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20]);
+    </script>
+    
+</body>
+</html>
